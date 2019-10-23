@@ -1,0 +1,7 @@
+name: cvat_helm_build
+description: A generated Helm Chart for cvat_helm_build from Skippbox Kompose
+version: 0.0.1
+keywords:
+  - cvat_helm_build
+sources:
+home:
