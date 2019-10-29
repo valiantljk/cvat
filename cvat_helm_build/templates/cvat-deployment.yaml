@@ -41,7 +41,7 @@ spec:
           value: "7080"
         - name: ALLOWED_HOSTS
           value: "*"
-        image: core.harbor.domain/library/cvat:v4.1
+        image: core.harbor.domain/library/cvat:v4.2
         name: cvat
         ports:
         - containerPort: 8080

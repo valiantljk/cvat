@@ -11,9 +11,9 @@ INSTALLED_APPS += [
 ]
 
 for key in RQ_QUEUES:
-    RQ_QUEUES[key]['HOST'] = 'cvat_redis'
+    RQ_QUEUES[key]['HOST'] = 'cvat-redis'
 
-CACHEOPS_REDIS['host'] = 'cvat_redis'
+CACHEOPS_REDIS['host'] = 'cvat-redis'
 
 # Django-sendfile:
 # https://github.com/johnsensible/django-sendfile
