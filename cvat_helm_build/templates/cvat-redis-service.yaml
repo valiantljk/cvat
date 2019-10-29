@@ -6,15 +6,13 @@ metadata:
     kompose.version: 1.19.0 ()
   creationTimestamp: null
   labels:
-    io.kompose.service: cvat
-  name: cvat
+    io.kompose.service: cvat-redis
+  name: redis
 spec:
   ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
   selector:
-    io.kompose.service: cvat
-  type: LoadBalancer
-status:
-  loadBalancer: {}
+    io.kompose.service: cvat-redis
+  type: ClusterIP

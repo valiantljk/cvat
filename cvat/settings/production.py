@@ -25,7 +25,7 @@ SENDFILE_BACKEND = 'sendfile.backends.xsendfile'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'cvat_db',
+        'HOST': 'db',
         'NAME': 'cvat',
         'USER': 'root',
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),

@@ -37,7 +37,7 @@ services:
       - cvat_redis
       - cvat_db
     ports:
-      - "8080:8080"
+      - "80:8080"
     build:
       context: .
       args:
@@ -54,7 +54,8 @@ services:
     environment:
       DJANGO_MODWSGI_EXTRA_ARGS: ""
       UI_PORT: 7080
-
+      ALLOWED_HOSTS: '*'
+      
     volumes:
       - cvat_data:/home/django/data
       - cvat_keys:/home/django/keys

@@ -21,16 +21,10 @@ spec:
       labels:
         io.kompose.service: cvat
     spec:
-      containers:
-      - env:
-        - name: DJANGO_MODWSGI_EXTRA_ARGS
-        - name: UI_PORT
-          value: "7080"
-        image: cvat
-        name: cvat
-        ports:
-        - containerPort: 8080
-        resources: {}
+      initContainers:
+      - name: volume-mount-hack
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /home/django/"]
         volumeMounts:
         - mountPath: /home/django/data
           name: cvat-data
@@ -40,6 +34,20 @@ spec:
           name: cvat-logs
         - mountPath: /home/django/models
           name: cvat-models
+      containers:
+      - env:
+        - name: DJANGO_MODWSGI_EXTRA_ARGS
+        - name: UI_PORT
+          value: "7080"
+        - name: ALLOWED_HOSTS
+          value: "*"
+        image: core.harbor.domain/library/cvat:v4.1
+        name: cvat
+        ports:
+        - containerPort: 8080
+        resources: {}
+      imagePullSecrets:
+      - name: harbor-sunmi
       restartPolicy: Always
       volumes:
       - name: cvat-data
